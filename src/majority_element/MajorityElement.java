@@ -10,6 +10,36 @@ public class MajorityElement {
             return a[left];
         }
         //write your code here
+        int mid = left + (right - left) / 2;
+        int m1 = getMajorityElement(a, left, mid);
+        int m2 = getMajorityElement(a, mid, right);
+
+        if (m1 != -1) {
+            int counter = 0;
+            for (int i = left; i < right; i++) {
+                if (a[i] == m1) {
+                    counter++;
+                }
+            }
+
+            if (counter >= (right - left) / 2 + 1) {
+                return m1;
+            }
+        }
+
+        if (m2 != -1) {
+            int counter = 0;
+            for (int i = left; i < right; i++) {
+                if (a[i] == m2) {
+                    counter++;
+                }
+            }
+
+            if (counter >= (right - left) / 2 + 1) {
+                return m2;
+            }
+        }
+
         return -1;
     }
 
